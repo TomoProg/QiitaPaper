@@ -1,0 +1,17 @@
+version: '2'
+
+volumes:
+  bundle_install:
+    driver: local
+
+services:
+  ruby:
+    build: ./app
+    container_name: qiita_paper_app
+    command: /scripts/start.sh
+    volumes:
+      - ./app:/app
+      - ./scripts:/scripts
+      - bundle_install:/usr/local/bundle
+    tty: true
+
